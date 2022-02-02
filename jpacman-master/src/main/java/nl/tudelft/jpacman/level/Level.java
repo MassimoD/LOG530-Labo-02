@@ -218,7 +218,13 @@ public class Level {
             }
             startNPCs();
             inProgress = true;
+
             updateObservers();
+            for (Player player:players
+                 ) {
+                player.setAlive(true);
+
+            }
         }
     }
 
@@ -272,6 +278,7 @@ public class Level {
         return inProgress;
     }
 
+
     /**
      * Updates the observers about the state of this level.
      */
@@ -302,6 +309,19 @@ public class Level {
             }
         }
         return false;
+    }
+    public boolean isAnyPlayerHasLifes() {
+        for (Player player : players) {
+            if (player.getLives() >0) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void resetPlayer(Player player){
+        Square square = startSquares.get(startSquareIndex);
+        player.occupy(square);
+        player.setAlive(true);
     }
 
     /**

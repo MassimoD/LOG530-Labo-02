@@ -1,6 +1,7 @@
 package nl.tudelft.jpacman.game;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
@@ -111,6 +112,14 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelLost() {
-        stop();
+        if(!getLevel().isAnyPlayerHasLifes()){
+            getLevel().stop();
+            stop();
+        }else{
+            inProgress=false;
+            getLevel().resetPlayer(getPlayers().get(0));
+            start();
+        }
     }
+
 }
