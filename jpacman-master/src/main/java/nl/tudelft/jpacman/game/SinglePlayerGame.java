@@ -3,7 +3,6 @@ package nl.tudelft.jpacman.game;
 import java.util.List;
 
 import nl.tudelft.jpacman.level.Level;
-import nl.tudelft.jpacman.level.LevelFactory;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 
