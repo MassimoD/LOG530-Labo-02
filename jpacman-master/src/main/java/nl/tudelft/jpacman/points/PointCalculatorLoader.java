@@ -1,9 +1,9 @@
 package nl.tudelft.jpacman.points;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  * The responsibility of this loader is to obtain the appropriate points calculator.
@@ -11,7 +11,7 @@ import java.util.Properties;
  */
 public class PointCalculatorLoader {
 
-    private static Class clazz = null;
+    private  PointCalculator clazz = null;
 
     /**
      * Load a points calculator and return it.
@@ -23,31 +23,30 @@ public class PointCalculatorLoader {
             if (clazz == null) {
                 clazz = loadClassFromFile();
             }
-
-            return (PointCalculator) clazz.newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException("Could not dynamically load the points calculator.", e);
+        }catch (FileNotFoundException|ClassNotFoundException e){
+            Logger.getGlobal().info(e.getMessage());
+            System.exit(0);
         }
+        return  clazz;
     }
 
-    private Class loadClassFromFile() throws IOException, ClassNotFoundException {
+    private PointCalculator loadClassFromFile() throws  FileNotFoundException,ClassNotFoundException {
         String strategyToLoad = getCalculatorClassName();
 
         if ("DefaultPointCalculator".equals(strategyToLoad)) {
-            return DefaultPointCalculator.class;
-        }
-
-        URL[] urls = new URL[]{getClass().getClassLoader().getResource("scoreplugins/")};
-
-        try (URLClassLoader classLoader = new URLClassLoader(urls, getClass().getClassLoader())) {
-            return classLoader.loadClass(strategyToLoad);
+            return new DefaultPointCalculator();
+        }else{
+            throw new ClassNotFoundException("Invalid pointCalculator:"+ strategyToLoad);
         }
     }
 
-    private String getCalculatorClassName() throws IOException {
+    private String getCalculatorClassName() throws FileNotFoundException {
         Properties properties = new Properties();
-
-        properties.load(getClass().getClassLoader().getResourceAsStream("scorecalc.properties"));
+    try {
+     properties.load(getClass().getClassLoader().getResourceAsStream("scorecalc.properties"));
+    }catch(IOException e){
+    throw new FileNotFoundException("We could not find the file scorecalc.properties");
+    }
 
         return properties.getProperty("scorecalculator.name");
     }

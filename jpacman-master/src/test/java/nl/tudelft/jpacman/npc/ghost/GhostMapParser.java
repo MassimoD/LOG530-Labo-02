@@ -4,7 +4,8 @@ import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.level.LevelFactory;
 import nl.tudelft.jpacman.level.MapParser;
-import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.ghost.GhostFactory;
 
 import java.util.List;
 

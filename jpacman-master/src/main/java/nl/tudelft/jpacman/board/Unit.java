@@ -71,14 +71,15 @@ public abstract class Unit {
      *            The square to occupy.
      */
     public void occupy(Square target) {
-        assert target != null;
+        if(target != null) {
 
-        if (square != null) {
-            square.remove(this);
+            if (square != null) {
+                square.remove(this);
+            }
+            square = target;
+            target.put(this);
+            assert invariant();
         }
-        square = target;
-        target.put(this);
-        assert invariant();
     }
 
     /**

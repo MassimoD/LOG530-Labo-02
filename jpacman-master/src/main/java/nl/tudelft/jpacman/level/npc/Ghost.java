@@ -1,4 +1,4 @@
-package nl.tudelft.jpacman.npc;
+package nl.tudelft.jpacman.level.npc;
 
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;

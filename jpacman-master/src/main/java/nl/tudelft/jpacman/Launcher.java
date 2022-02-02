@@ -13,7 +13,7 @@ import nl.tudelft.jpacman.level.LevelFactory;
 import nl.tudelft.jpacman.level.MapParser;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.level.PlayerFactory;
-import nl.tudelft.jpacman.npc.ghost.GhostFactory;
+import nl.tudelft.jpacman.level.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
 import nl.tudelft.jpacman.sprite.PacManSprites;
@@ -204,10 +204,8 @@ public class Launcher {
      *
      * @param args
      *            The command line arguments - which are ignored.
-     * @throws IOException
-     *             When a resource could not be read.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         new Launcher().launch();
     }
 }

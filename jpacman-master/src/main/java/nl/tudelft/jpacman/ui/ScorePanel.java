@@ -5,8 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.level.Player;
 
@@ -27,7 +26,7 @@ public class ScorePanel extends JPanel {
     /**
      * The map of players and the labels their scores are on.
      */
-    private final Map<Player, JLabel> scoreLabels;
+    private  final transient Map<Player, JLabel> scoreLabels;
 
     /**
      * The default way in which the score is shown.
@@ -38,7 +37,7 @@ public class ScorePanel extends JPanel {
     /**
      * The way to format the score information.
      */
-    private ScoreFormatter scoreFormatter = DEFAULT_SCORE_FORMATTER;
+    private transient ScoreFormatter scoreFormatter = DEFAULT_SCORE_FORMATTER;
 
     /**
      * Creates a new score panel with a column for each player.
@@ -48,16 +47,18 @@ public class ScorePanel extends JPanel {
      */
     public ScorePanel(List<Player> players) {
         super();
-        assert players != null;
+        if(players == null){
+            throw new IllegalArgumentException("Players are null.");
+        }
 
         setLayout(new GridLayout(2, players.size()));
 
         for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
+            add(new JLabel("Player " + i, SwingConstants.CENTER));
         }
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
-            JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
+            JLabel scoreLabel = new JLabel("0", SwingConstants.CENTER);
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel);
         }
@@ -96,7 +97,9 @@ public class ScorePanel extends JPanel {
      * @param scoreFormatter Score formatter to be used.
      */
     public void setScoreFormatter(ScoreFormatter scoreFormatter) {
-        assert scoreFormatter != null;
+        if(scoreFormatter == null){
+            throw new IllegalArgumentException("scoreFormatter is null");
+        }
         this.scoreFormatter = scoreFormatter;
     }
 }

@@ -1,9 +1,6 @@
-package nl.tudelft.jpacman.npc.ghost;
+package nl.tudelft.jpacman.level.npc.ghost;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
@@ -57,7 +54,7 @@ public final class Navigation {
             visited.add(square);
             addNewTargets(traveller, targets, visited, node, square);
         }
-        return null;
+        return Collections.emptyList();
     }
 
     private static void addNewTargets(Unit traveller, List<Node> targets,
@@ -211,13 +208,6 @@ public final class Navigation {
             return square;
         }
 
-        /**
-         * @return The parent node, or <code>null</code> if this node is a root
-         *         node.
-         */
-        private Node getParent() {
-            return parent;
-        }
 
         /**
          * Returns the list of values from the root of the tree to this node.

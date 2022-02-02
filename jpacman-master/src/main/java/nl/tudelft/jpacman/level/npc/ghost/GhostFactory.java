@@ -1,6 +1,6 @@
-package nl.tudelft.jpacman.npc.ghost;
+package nl.tudelft.jpacman.level.npc.ghost;
 
-import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.Ghost;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 
 /**

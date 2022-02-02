@@ -1,4 +1,4 @@
-package nl.tudelft.jpacman.npc.ghost;
+package nl.tudelft.jpacman.level.npc.ghost;
 
 /**
  * A list of supported ghost colors.
