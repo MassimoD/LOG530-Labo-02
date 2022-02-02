@@ -1,4 +1,4 @@
-package nl.tudelft.jpacman.npc.ghost;
+package nl.tudelft.jpacman.level.npc.ghost;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit;
 import nl.tudelft.jpacman.level.Player;
-import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
 
 /**

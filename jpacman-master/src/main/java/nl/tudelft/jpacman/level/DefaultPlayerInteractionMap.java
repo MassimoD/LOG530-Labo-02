@@ -1,7 +1,7 @@
 package nl.tudelft.jpacman.level;
 
 import nl.tudelft.jpacman.board.Unit;
-import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.Ghost;
 import nl.tudelft.jpacman.points.PointCalculator;
 
 /**

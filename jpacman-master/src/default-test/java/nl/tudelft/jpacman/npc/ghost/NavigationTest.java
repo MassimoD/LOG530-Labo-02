@@ -9,7 +9,9 @@ import nl.tudelft.jpacman.board.Unit;
 import nl.tudelft.jpacman.level.LevelFactory;
 import nl.tudelft.jpacman.level.MapParser;
 import nl.tudelft.jpacman.level.Pellet;
-import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.Ghost;
+import nl.tudelft.jpacman.level.npc.ghost.GhostFactory;
+import nl.tudelft.jpacman.level.npc.ghost.Navigation;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import org.junit.jupiter.api.BeforeEach;
@@ -73,7 +75,7 @@ class NavigationTest {
         Square s2 = b.squareAt(3, 1);
         List<Direction> path = Navigation
             .shortestPath(s1, s2, mock(Unit.class));
-        assertThat(path).isNull();
+        assertThat(path).isNullOrEmpty();
     }
 
     /**

@@ -27,7 +27,9 @@ class PacKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent event) {
-        assert event != null;
+        if(event == null){
+            throw new IllegalArgumentException("KeyEvent is null.");
+        }
         Action action = mappings.get(event.getKeyCode());
         if (action != null) {
             action.doAction();
